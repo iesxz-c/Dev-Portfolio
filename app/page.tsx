@@ -7,6 +7,7 @@ import Projects from "@/components/Projects";
 import Approach from "@/components/Approach";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
+import NowPlayingCard from "@/components/NowPlaying";
 export default function Home() {
   return (
    <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
@@ -14,6 +15,7 @@ export default function Home() {
         <FloatingNav navItems={navItems}/>
         <Hero/>
         <AboutSection/>
+        <NowPlayingCard/>
         <RecentProjects/>
         <Projects/>
         <Approach/>
