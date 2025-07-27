@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils"
 import { TextGenerateEffect } from './text-generate-effect'
 import MagicButton from './ui/MagicButton'
 import { FaLocationArrow } from "react-icons/fa";
-import { RetroGrid } from "@/components/magicui/retro-grid";
 
 const Hero = () => {
   const [spotlights, setSpotlights] = useState<{ x: number; y: number; id: number }[]>([]);
