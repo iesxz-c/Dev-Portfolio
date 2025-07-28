@@ -7,7 +7,6 @@ import Projects from "@/components/Projects";
 import Approach from "@/components/Approach";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
-import NowPlayingCard from "@/components/NowPlaying";
 import GitHubStatsCard from "@/components/GithubStatusCard";
 export default function Home() {
   return (
@@ -16,7 +15,7 @@ export default function Home() {
         <FloatingNav navItems={navItems}/>
         <Hero/>
         <AboutSection/>
-        <NowPlayingCard/>
+
         <GitHubStatsCard/>
         <RecentProjects/>
         <Projects/>
