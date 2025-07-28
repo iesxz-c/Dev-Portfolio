@@ -38,6 +38,20 @@ export default function NowPlayingCard() {
   const [progressMs, setProgressMs] = useState<number>(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Complete default track with all required fields
+  const defaultTrack: NowPlaying = {
+    isPlaying: false,
+    title: "Seek & Destroy",
+    artist: "Metallica",
+    album: "Kill 'Em All",
+    albumImageUrl: "/o.jpg",
+    songUrl: "https://open.spotify.com/track/28WmNsclKsrVmdv3tDmoYU?si=071fc92f85364402",
+    progressMs: 0,
+    durationMs: 415000, // ~6:55 duration for the song
+    device: "Default Device",
+    playedAt: new Date().toISOString(),
+  };
+
   useEffect(() => {
     const fetchTrack = () => {
     fetch("/api/now-playing")
@@ -51,11 +65,19 @@ export default function NowPlayingCard() {
             setProgressMs(0);
           } else {
             setTrack(defaultTrack);
+            setProgressMs(0);
           }
         } else {
-          setTrack(data);
+          // Merge with defaults to ensure all fields are present
+          const trackData = {
+            ...defaultTrack,
+            ...data,
+            albumImageUrl: data.albumImageUrl || defaultTrack.albumImageUrl,
+            songUrl: data.songUrl || defaultTrack.songUrl,
+          };
+          setTrack(trackData);
           setProgressMs(data.progressMs ?? 0);
-          localStorage.setItem("lastPlayedTrack", JSON.stringify(data));
+          localStorage.setItem("lastPlayedTrack", JSON.stringify(trackData));
         }
       })
       .catch(() => {
@@ -66,14 +88,16 @@ export default function NowPlayingCard() {
           setProgressMs(0);
         } else {
           setTrack(defaultTrack);
+          setProgressMs(0);
         }
       });};
+    
     fetchTrack();
-     const interval = setInterval(() => {
-    fetchTrack();
-  }, 30000); // every 1 second
+    const interval = setInterval(() => {
+      fetchTrack();
+    }, 30000); // every 30 seconds
 
-  return () => clearInterval(interval);
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -107,19 +131,6 @@ export default function NowPlayingCard() {
       ? Math.min(Math.round((progressMs / track.durationMs) * 100), 100)
       : 0;
 
-  const defaultTrack: NowPlaying = {
-    isPlaying: false,
-    title: "Not Playing",
-    artist: "Spotify",
-    album: "",
-    albumImageUrl: "",
-    songUrl: "#",
-    progressMs: 0,
-    durationMs: 0,
-    device: "",
-    playedAt: "",
-  };
-
   return (
     <>
     <div className="flex flex-col md:flex-row items-center gap-4 p-2">
@@ -128,13 +139,13 @@ export default function NowPlayingCard() {
         <div
           className={clsx(
             "w-full h-full rounded-full p-2 flex items-center justify-center",
-            track && "animate-spin-slow" 
+            track?.isPlaying && "animate-spin-slow" 
           )}
         >
           {track?.albumImageUrl ? (
             <Image
               src={track.albumImageUrl}
-              alt={track.title}
+              alt={track.title || "Album cover"}
               width={96}
               height={96}
               className="w-full h-full object-cover rounded-full"
@@ -158,7 +169,7 @@ export default function NowPlayingCard() {
         >
           {track?.title ? (
             <a
-              href={track.songUrl}
+              href={track.songUrl || "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline"
@@ -170,7 +181,7 @@ export default function NowPlayingCard() {
           )}
         </Text>
         <Text className="text-white/90 text-sm truncate">
-          {track?.artist || "Spotify"}
+          {track?.artist || "Unknown Artist"}
         </Text>
         {track?.album && (
           <Text className="text-white/70 text-xs truncate">
