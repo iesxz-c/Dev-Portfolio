@@ -44,7 +44,7 @@ export default function NowPlayingCard() {
     title: "Seek & Destroy",
     artist: "Metallica",
     album: "Kill 'Em All",
-    albumImageUrl: "/o.jpg",
+    albumImageUrl: "/k.jpg",
     songUrl: "https://open.spotify.com/track/28WmNsclKsrVmdv3tDmoYU?si=071fc92f85364402",
     progressMs: 0,
     durationMs: 415000, // ~6:55 duration for the song
@@ -177,13 +177,13 @@ export default function NowPlayingCard() {
               {track.title}
             </a>
           ) : (
-            <>
-      Seek & Destroy <span className="text-white/50">(Last Played)</span>
+            <> 
+            Wake Me up When September Ends <span className="text-white/50">(Last Played)</span>
     </>
           )}
         </Text>
         <Text className="text-white/90 text-sm truncate">
-          {track?.artist || "Metallica"}
+          {track?.artist || "Green Day"}
         </Text>
         {track?.album && (
           <Text className="text-white/70 text-xs truncate">
