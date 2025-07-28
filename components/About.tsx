@@ -31,14 +31,28 @@ const toolboxItems = [
 
 const hobbies = [
   { title: "Traveling", emoji: "🌍", left: '5%', top: '5%' },
-  { title: "Comics", emoji: "🧘‍♂️", left: '50%', top: '5%' },
+  { title: "Comics", emoji: "🦸‍♂️", left: '50%', top: '5%' },
   { title: "Music", emoji: "🎷", left: '10%', top: '35%' },
   { title: "Movies", emoji: "🎬", left: '35%', top: '40%' },
   { title: "Cricket", emoji: "🏏", left: '70%', top: '45%' },
   { title: "Reading", emoji: "📚", left: '5%', top: '65%' },
-  { title: "Cooking", emoji: "🍳", left: '45%', top: '70%' },
+  { title: "Coffee", emoji: "☕", left: '25%', top: '15%' },
+  { title: "Tennis", emoji: "🎾", left: '60%', top: '20%' },
+  { title: "eFootball", emoji: "⚽", left: '15%', top: '50%' },
+  { title: "Minecraft", emoji: "🧱", left: '55%', top: '55%' },
+  { title: "Manga", emoji: "📖", left: '30%', top: '25%' },
+  { title: "Anime", emoji: "🍜", left: '65%', top: '85%' },
 ];
-
+const hobbie = [
+  { title: "Traveling", emoji: "", left: '5%', top: '5%' },
+  { title: "Comics", emoji: "", left: '50%', top: '5%' },
+  { title: "Music", emoji: "", left: '10%', top: '35%' },
+  { title: "Movies", emoji: "", left: '35%', top: '40%' },
+  { title: "Cricket", emoji: "", left: '70%', top: '45%' },
+  { title: "Reading", emoji: "", left: '5%', top: '65%' },
+  { title: "Cooking", emoji: "", left: '45%', top: '70%' },
+  { title: "Anime", emoji: "", left: '45%', top: '70%' },
+];
 export const AboutSection = () => {
   const constraintRef = useRef(null);
 
@@ -92,7 +106,7 @@ export const AboutSection = () => {
 
               {/* Mobile */}
               <div className="sm:hidden px-6 pb-6 grid grid-cols-2 gap-y-3 gap-x-4 text-sm">
-                {hobbies.map((hobby) => (
+                {hobbie.map((hobby) => (
                   <div
                     key={hobby.title}
                     className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group shadow-inner shadow-purple-500/10 hover:shadow-purple-500/30"

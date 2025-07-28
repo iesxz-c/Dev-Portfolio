@@ -139,7 +139,7 @@ export default function NowPlayingCard() {
         <div
           className={clsx(
             "w-full h-full rounded-full p-2 flex items-center justify-center",
-            track?.isPlaying && "animate-spin-slow" 
+            track && "animate-spin-slow" 
           )}
         >
           {track?.albumImageUrl ? (
@@ -177,11 +177,13 @@ export default function NowPlayingCard() {
               {track.title}
             </a>
           ) : (
-            "Not Playing"
+            <>
+      Seek & Destroy <span className="text-white/50">(Last Played)</span>
+    </>
           )}
         </Text>
         <Text className="text-white/90 text-sm truncate">
-          {track?.artist || "Unknown Artist"}
+          {track?.artist || "Metallica"}
         </Text>
         {track?.album && (
           <Text className="text-white/70 text-xs truncate">
