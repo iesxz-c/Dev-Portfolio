@@ -153,8 +153,8 @@ export const AboutSection = () => {
     {typeof window === "undefined" ? null : (
       <div className="hidden md:block">
         <CardHeader
-          title="Now Playing"
-          description="What I'm currently vibing to."
+          title="Spotify"
+          description="Vibes from my recent playlist."
           className="px-6 py-6"
         />
       </div>
