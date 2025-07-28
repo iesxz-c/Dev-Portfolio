@@ -9,7 +9,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setHasMounted(true);
-    // You can add a loading timeout here if needed
   }, []);
 
   return (

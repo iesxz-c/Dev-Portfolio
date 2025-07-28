@@ -174,7 +174,7 @@ export const AboutSection = () => {
       </div>
     )}
 
-    {/* You can even add an optional mobile-only mini header if needed */}
+    {/*  */}
     {/* 
     <div className="md:hidden px-6 pt-4">
       <h4 className="text-white font-semibold text-base">Now Playing 🎧</h4>
