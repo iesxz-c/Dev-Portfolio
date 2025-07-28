@@ -206,7 +206,7 @@ export default function NowPlayingCard() {
       </div>
 
       {/* Status */}
-      <div className="flex-shrink-0 mt-4 md:mt-0 w-full md:w-auto flex justify-center">
+      <div className="hidden md:flex flex-shrink-0 mt-4 md:mt-0 w-full md:w-auto justify-center">
         <span className="inline-block bg-pink-600 text-black font-bold border border-black px-4 py-1 rounded shadow">
           {track?.isPlaying ? "LIVE" : "OFF"}
         </span>

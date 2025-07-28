@@ -147,17 +147,33 @@ export const AboutSection = () => {
 
           {/* Now Playing Bento Card */}
           <div className="grid grid-cols-1">
-            <Card className="h-[320px] p-0 backdrop-blur-xl  border border-white/10">
-              <CardHeader
-                title="Now Playing"
-                description="What I'm currently vibing to."
-                className="px-6 py-6"
-              />
-              <div className="p-6">
-                <NowPlayingCard />
-              </div>
-            </Card>
-          </div>
+  <Card className="h-[320px] p-0 backdrop-blur-xl border border-white/10">
+
+    {/* Desktop & tablet header (md and up) */}
+    {typeof window === "undefined" ? null : (
+      <div className="hidden md:block">
+        <CardHeader
+          title="Now Playing"
+          description="What I'm currently vibing to."
+          className="px-6 py-6"
+        />
+      </div>
+    )}
+
+    {/* You can even add an optional mobile-only mini header if needed */}
+    {/* 
+    <div className="md:hidden px-6 pt-4">
+      <h4 className="text-white font-semibold text-base">Now Playing 🎧</h4>
+    </div>
+    */}
+
+    <div className="p-6">
+      <NowPlayingCard />
+    </div>
+    
+  </Card>
+</div>
+
         </div>
       </div>
     </div>
