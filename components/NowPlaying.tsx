@@ -114,16 +114,10 @@ export default function NowPlayingCard() {
   };
 
   return (
-    <C
-      className={clsx(
-         "flex flex-col md:flex-row items-center gap-4",
-    "bg-transparent",                 // <--- TRUE transparency
-            // <--- Thin soft white border
-    " p-6 max-w-2xl w-full mx-auto"
-      )}
-    >
+    <>
+    <div className="flex flex-col md:flex-row items-center gap-4 p-2">
       {/* Album Art */}
-      <div className="relative w-28 h-28 md:w-32 md:h-32 flex-shrink-0 rounded-full overflow-hidden border border-white/30 bg-white/10">
+      <div className="relative  w-28 h-28 md:w-32 md:h-32 flex-shrink-0 rounded-full overflow-hidden border border-white/30 bg-white/10">
         <div
           className={clsx(
             "w-full h-full rounded-full p-2 flex items-center justify-center",
@@ -210,6 +204,7 @@ export default function NowPlayingCard() {
           {track?.isPlaying ? "LIVE" : "OFF"}
         </span>
       </div>
-    </C>
+      </div>
+    </>
   );
 }
