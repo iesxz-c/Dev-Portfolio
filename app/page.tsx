@@ -16,7 +16,6 @@ export default function Home() {
         <FloatingNav navItems={navItems}/>
         <Hero/>
         <AboutSection/>
-        <NowPlayingCard/>
         <GitHubStatsCard/>
         <RecentProjects/>
         <Projects/>

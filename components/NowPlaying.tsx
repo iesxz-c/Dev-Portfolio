@@ -39,6 +39,7 @@ export default function NowPlayingCard() {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    const fetchTrack = () => {
     fetch("/api/now-playing")
       .then((res) => res.json())
       .then((data) => {
@@ -66,7 +67,13 @@ export default function NowPlayingCard() {
         } else {
           setTrack(defaultTrack);
         }
-      });
+      });};
+    fetchTrack();
+     const interval = setInterval(() => {
+    fetchTrack();
+  }, 30000); // every 1 second
+
+  return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -121,7 +128,7 @@ export default function NowPlayingCard() {
         <div
           className={clsx(
             "w-full h-full rounded-full p-2 flex items-center justify-center",
-            track?.isPlaying && "animate-spin-slow"
+            track && "animate-spin-slow" 
           )}
         >
           {track?.albumImageUrl ? (
@@ -185,7 +192,7 @@ export default function NowPlayingCard() {
         <div className="mt-2">
           <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden">
             <div
-              className="h-full bg-green-400 transition-all"
+              className="h-full bg-pink-600 transition-all"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -200,7 +207,7 @@ export default function NowPlayingCard() {
 
       {/* Status */}
       <div className="flex-shrink-0 mt-4 md:mt-0 w-full md:w-auto flex justify-center">
-        <span className="inline-block bg-green-400 text-black font-bold border border-black px-4 py-1 rounded shadow">
+        <span className="inline-block bg-pink-600 text-black font-bold border border-black px-4 py-1 rounded shadow">
           {track?.isPlaying ? "LIVE" : "OFF"}
         </span>
       </div>
