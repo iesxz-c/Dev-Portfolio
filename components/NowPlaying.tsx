@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { C } from "@/components/retroui/C";
+
 import { Text } from "@/components/retroui/Text";
 import Image from "next/image";
 import clsx from "clsx";
