@@ -8,7 +8,7 @@ const RecentProjects = () => {
   return (
     <div id="projects" className='py-20'>
       <Sh
-       title="Recent Projects"
+       title="Some of My Projects"
                          description="Learn more about some of my recent projects."/>
 
       <div className="flex flex-wrap items-start justify-center mt-20 p-4 gap-x-24 gap-y-4 ">
