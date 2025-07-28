@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import { HTMLAttributes } from "react";
-import { Text } from "./Text";
 
 interface ICardProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -10,7 +9,7 @@ const Card = ({ className, ...props }: ICardProps) => {
   return (
     <div
       className={cn(
-        "inline-block border-2 shadow-md transition-all hover:shadow-xs bg-card",
+        "inline-block rounded-xl border border-white/10 bg-glass shadow-lg backdrop-blur-md transition-all hover:shadow-xl",
         className
       )}
       {...props}
@@ -20,19 +19,21 @@ const Card = ({ className, ...props }: ICardProps) => {
 
 const CardHeader = ({ className, ...props }: ICardProps) => {
   return (
-    <div
-      className={cn("flex flex-col justify-start p-4", className)}
+    <div className={cn("flex flex-col justify-start p-4", className)} {...props} />
+  );
+};
+
+const CardTitle = ({ className, ...props }: ICardProps) => {
+  return (
+    <h3
+      className={cn("mb-2 text-white text-lg font-semibold tracking-tight", className)}
       {...props}
     />
   );
 };
 
-const CardTitle = ({ className, ...props }: ICardProps) => {
-  return <Text as="h3" className={cn("mb-2", className)} {...props} />;
-};
-
 const CardDescription = ({ className, ...props }: ICardProps) => (
-  <p className={cn("text-muted-foreground", className)} {...props} />
+  <p className={cn("text-white/70 text-sm", className)} {...props} />
 );
 
 const CardContent = ({ className, ...props }: ICardProps) => {

@@ -43,38 +43,29 @@ export default function NowPlayingCard() {
       .then((res) => res.json())
       .then((data) => {
         if (!data || data.error) {
-          setTrack({
-            isPlaying: false,
-            title: "Not Playing",
-            artist: "Spotify",
-            album: "",
-            albumImageUrl: "",
-            songUrl: "#",
-            progressMs: 0,
-            durationMs: 0,
-            device: "",
-            playedAt: "",
-          });
-          setProgressMs(0);
+          const stored = localStorage.getItem("lastPlayedTrack");
+          if (stored) {
+            const lastTrack: NowPlaying = JSON.parse(stored);
+            setTrack({ ...lastTrack, isPlaying: false });
+            setProgressMs(0);
+          } else {
+            setTrack(defaultTrack);
+          }
         } else {
           setTrack(data);
           setProgressMs(data.progressMs ?? 0);
+          localStorage.setItem("lastPlayedTrack", JSON.stringify(data));
         }
       })
       .catch(() => {
-        setTrack({
-          isPlaying: false,
-          title: "Not Playing",
-          artist: "Spotify",
-          album: "",
-          albumImageUrl: "",
-          songUrl: "#",
-          progressMs: 0,
-          durationMs: 0,
-          device: "",
-          playedAt: "",
-        });
-        setProgressMs(0);
+        const stored = localStorage.getItem("lastPlayedTrack");
+        if (stored) {
+          const lastTrack: NowPlaying = JSON.parse(stored);
+          setTrack({ ...lastTrack, isPlaying: false });
+          setProgressMs(0);
+        } else {
+          setTrack(defaultTrack);
+        }
       });
   }, []);
 
@@ -109,9 +100,30 @@ export default function NowPlayingCard() {
       ? Math.min(Math.round((progressMs / track.durationMs) * 100), 100)
       : 0;
 
+  const defaultTrack: NowPlaying = {
+    isPlaying: false,
+    title: "Not Playing",
+    artist: "Spotify",
+    album: "",
+    albumImageUrl: "",
+    songUrl: "#",
+    progressMs: 0,
+    durationMs: 0,
+    device: "",
+    playedAt: "",
+  };
+
   return (
-    <Card className="flex flex-col md:flex-row items-center gap-4 bg-black/70 border-green-400 border-2 shadow-lg px-4 py-5 w-full max-w-md md:max-w-2xl mx-auto">
-      <div className="relative w-28 h-28 md:w-32 md:h-32 flex-shrink-0 rounded-full bg-gray-900 border-4 border-black overflow-hidden flex items-center justify-center">
+    <Card
+      className={clsx(
+         "flex flex-col md:flex-row items-center gap-4",
+    "bg-transparent",                 // <--- TRUE transparency
+    "border border-white/20",        // <--- Thin soft white border
+    "rounded-2xl p-6 max-w-2xl w-full mx-auto"
+      )}
+    >
+      {/* Album Art */}
+      <div className="relative w-28 h-28 md:w-32 md:h-32 flex-shrink-0 rounded-full overflow-hidden border border-white/30 bg-white/10">
         <div
           className={clsx(
             "w-full h-full rounded-full p-2 flex items-center justify-center",
@@ -125,10 +137,9 @@ export default function NowPlayingCard() {
               width={96}
               height={96}
               className="w-full h-full object-cover rounded-full"
-              style={{ imageRendering: "pixelated" }}
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-gray-500 text-3xl">
+            <div className="w-full h-full flex items-center justify-center text-white text-2xl">
               ♪
             </div>
           )}
@@ -138,12 +149,13 @@ export default function NowPlayingCard() {
         </div>
       </div>
 
-      <div className="flex-1 min-w-0 flex flex-col gap-1 w-full text-center md:text-left">
+      {/* Info */}
+      <div className="flex-1 min-w-0 flex flex-col gap-1 text-center md:text-left">
         <Text
           as="h4"
-          className="font-bold text-green-400 text-lg md:text-xl truncate"
+          className="font-bold text-white text-lg md:text-xl truncate"
         >
-          {track?.isPlaying || track?.title ? (
+          {track?.title ? (
             <a
               href={track.songUrl}
               target="_blank"
@@ -156,41 +168,45 @@ export default function NowPlayingCard() {
             "Not Playing"
           )}
         </Text>
-        <Text className="text-white text-base truncate">
+        <Text className="text-white/90 text-sm truncate">
           {track?.artist || "Spotify"}
         </Text>
         {track?.album && (
-          <Text className="text-green-200 text-xs truncate">
+          <Text className="text-white/70 text-xs truncate">
             Album: {track.album}
           </Text>
         )}
         {track?.device && (
-          <Text className="text-green-400 text-xs truncate">
+          <Text className="text-white/70 text-xs truncate">
             Device: {track.device}
           </Text>
         )}
         {!track?.isPlaying && track?.playedAt && (
-          <Text className="text-green-300 text-xs truncate mt-1">
+          <Text className="text-white/50 text-xs truncate mt-1">
             Last played: {formatDate(track.playedAt)}
           </Text>
         )}
+
+        {/* Progress Bar */}
         <div className="mt-2">
-          <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden border border-green-400">
+          <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden">
             <div
               className="h-full bg-green-400 transition-all"
               style={{ width: `${progress}%` }}
             />
           </div>
           {track?.isPlaying && track.durationMs !== undefined && (
-            <div className="flex justify-between text-xs text-green-200 mt-1 font-mono">
+            <div className="flex justify-between text-xs text-white/80 mt-1 font-mono">
               <span>{msToTime(progressMs)}</span>
               <span>{msToTime(track.durationMs)}</span>
             </div>
           )}
         </div>
       </div>
+
+      {/* Status */}
       <div className="flex-shrink-0 mt-4 md:mt-0 w-full md:w-auto flex justify-center">
-        <span className="inline-block bg-green-400 text-black font-bold border-2 border-black px-4 py-2 rounded-none shadow-md">
+        <span className="inline-block bg-green-400 text-black font-bold border border-black px-4 py-1 rounded shadow">
           {track?.isPlaying ? "LIVE" : "OFF"}
         </span>
       </div>

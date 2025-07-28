@@ -149,6 +149,21 @@ body {
   overflow-x: hidden;
 }
 
+/* Add this to globals.css */
+.bg-glass {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0),
+    radial-gradient(circle at 3px 3px, rgba(255,255,255,0.06) 1px, transparent 0);
+  background-size: 6px 6px;
+  background-blend-mode: overlay;
+}
+
+
+
 .cursor-dot,
 .cursor-ring {
   position: fixed;
