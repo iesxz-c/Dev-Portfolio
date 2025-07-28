@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { Card } from "@/components/retroui/Card";
+import { C } from "@/components/retroui/C";
 import { Text } from "@/components/retroui/Text";
 import Image from "next/image";
 import clsx from "clsx";
@@ -114,12 +114,12 @@ export default function NowPlayingCard() {
   };
 
   return (
-    <Card
+    <C
       className={clsx(
          "flex flex-col md:flex-row items-center gap-4",
     "bg-transparent",                 // <--- TRUE transparency
-    "border border-white/20",        // <--- Thin soft white border
-    "rounded-2xl p-6 max-w-2xl w-full mx-auto"
+            // <--- Thin soft white border
+    " p-6 max-w-2xl w-full mx-auto"
       )}
     >
       {/* Album Art */}
@@ -210,6 +210,6 @@ export default function NowPlayingCard() {
           {track?.isPlaying ? "LIVE" : "OFF"}
         </span>
       </div>
-    </Card>
+    </C>
   );
 }
