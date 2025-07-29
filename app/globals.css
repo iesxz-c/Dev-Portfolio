@@ -26,7 +26,23 @@
     background-size: 400% 400%;
     animation: rgbBorder 6s ease infinite;
   }
-
+  @theme inline {
+  --animate-meteor: meteor 5s linear infinite;
+ 
+  @keyframes meteor {
+    0% {
+      transform: rotate(var(--angle)) translateX(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(var(--angle)) translateX(-500px);
+      opacity: 0;
+    }
+  }
+}
   @keyframes rgbBorder {
     0% {
       background-position: 0% 50%;
