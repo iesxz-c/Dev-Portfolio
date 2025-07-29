@@ -105,7 +105,7 @@ const GitHubStatsCard = () => {
     if (!stats?.contributionCalendar?.weeks) return null;
     
     return (
-      <div className="flex gap-1 overflow-x-auto pb-2 scrollbar-hide">
+      <div className="flex gap-1 justify-start max-w-fit">
         {stats.contributionCalendar.weeks.map((week, weekIndex) => (
           <div key={weekIndex} className="flex flex-col gap-1">
             {week.contributionDays.map((day, dayIndex) => (
@@ -213,8 +213,8 @@ const GitHubStatsCard = () => {
       viewport={{ once: true }}
       className="max-w-full"
     >
-      <Card className="overflow-hidden border-2 border-black bg-black/30 backdrop-blur-sm hover:translate-y-[-2px] transition-all w-full">
-        <div className="p-3 sm:p-4">
+      <div className="relative overflow-hidden rounded-3xl bg-transparent border border-white/10 shadow-none hover:translate-y-[-2px] transition-all duration-300 w-full h-[320px] after:absolute after:inset-0 after:rounded-3xl after:border-2 after:border-white/20 after:pointer-events-none after:opacity-100">
+        <div className="p-6">
           <div className="flex justify-between items-center mb-3 sm:mb-4">
             <a
               href={DATA.hero.social.GitHub}
@@ -251,11 +251,12 @@ const GitHubStatsCard = () => {
             </Text>
           </div>
 
-          <div className="bg-gray-900/50 border-2 border-black rounded p-2 sm:p-3">
+          <div className="bg-gray-900/50 border-2 border-black rounded p-2 sm:p-3 w-fit max-w-full 
+          overflow-x-auto justify-center">
             {renderHeatmap()}
           </div>
         </div>
-      </Card>
+      </div>
     </motion.div>
   );
 };

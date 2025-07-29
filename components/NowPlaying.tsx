@@ -178,7 +178,7 @@ export default function NowPlayingCard() {
             </a>
           ) : (
             <> 
-            Wake Me up When September Ends <span className="text-white/50">(Last Played)</span>
+            Wake Me up When September Ends <span className="text-gray-400 font-light">(Last Played)</span>
     </>
           )}
         </Text>
