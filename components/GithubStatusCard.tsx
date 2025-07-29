@@ -251,10 +251,12 @@ const GitHubStatsCard = () => {
             </Text>
           </div>
 
-          <div className="bg-gray-900/50 border-2 border-black rounded p-2 sm:p-3 w-fit max-w-full 
-          overflow-x-auto justify-center">
-            {renderHeatmap()}
-          </div>
+    <div className="  rounded p-2 sm:p-3 max-w-full overflow-x-auto">
+  <div className="w-full flex justify-center">
+    {renderHeatmap()}
+  </div>
+</div>
+
         </div>
       </div>
     </motion.div>
