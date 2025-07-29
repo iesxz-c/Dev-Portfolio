@@ -1,6 +1,6 @@
 "use client";
 import { OrbitingCircles } from "./orbiting-circles";
-
+import { Particles } from "./Particles";
 import ReIcon from "@/assets/re.svg";
 import GitIcon from "@/assets/git.svg";
 import PythonIcon from "@/assets/pio.svg";
@@ -10,9 +10,13 @@ export function OrbitingCirclesDemo() {
   return (
     <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden">
       {/* Falling particles background */}
-       <div className="relative overflow-hidden h-[500px] w-full max-w-[350px]">
-  
-</div>
+       <Particles
+        className="absolute inset-0 z-0"
+        quantity={100}
+        ease={80}
+        color={"#ffffff"}
+        refresh
+      />
 
       {/* Center Text */}
       <div className="absolute z-10 text-white text-xl font-bold animate-pulse pointer-events-none">
