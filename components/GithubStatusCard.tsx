@@ -256,7 +256,7 @@ const GitHubStatsCard = () => {
     {renderHeatmap()}
   </div>
 </div>
-
+          
         </div>
       </div>
     </motion.div>
