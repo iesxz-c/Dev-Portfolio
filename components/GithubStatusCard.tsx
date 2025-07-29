@@ -11,6 +11,7 @@ import {
   AiOutlineFolder,
   AiOutlineExclamationCircle,
 } from "react-icons/ai";
+import { SectionHeader } from "./SectionHeader";
 
 interface ContributionDay {
   color: string;
@@ -212,7 +213,11 @@ const GitHubStatsCard = () => {
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
       className="max-w-full"
-    >
+    ><SectionHeader
+          title="Github"
+          eyebrow=""
+          description=""
+        />
       <div className="relative overflow-hidden rounded-3xl bg-transparent border border-white/10 shadow-none hover:translate-y-[-2px] transition-all duration-300 w-full h-[320px] after:absolute after:inset-0 after:rounded-3xl after:border-2 after:border-white/20 after:pointer-events-none after:opacity-100">
         <div className="p-6">
           <div className="flex justify-between items-center mb-3 sm:mb-4">

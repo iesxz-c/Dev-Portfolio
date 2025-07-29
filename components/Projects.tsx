@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Project from "./Project";
 import { myProjects } from "@/data";
-import { Sh } from "./Sh";
+import { SectionHeader } from "./SectionHeader";
 
 const Projects = () => {
   const x = useMotionValue(0);
@@ -21,9 +21,11 @@ const Projects = () => {
 
   return (
     <div className="mt-20 mb-24 ">
-      <Sh
-      title="My Certificates"
-                         description="Check out some of the certificates I've earned"/>
+      <SectionHeader
+        title="My Certificates"
+        eyebrow=""
+        description="Check out some of the certificates I've earned"
+      />
     <section
       onMouseMove={handleMouseMove}
       className="relative c-space section-spacing"

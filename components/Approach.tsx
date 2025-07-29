@@ -3,13 +3,17 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { CanvasRevealEffect } from "./ui/canvas-reveal-effect";
-import { Sh } from "./Sh";
+import { SectionHeader } from "./SectionHeader";
+
 
 const Approach = () => {
   return (
     <section className="w-full py-10 pt-16 ">
-      <Sh title="My Workflow Approach"
-                         description="Here's how I approach each project"/>
+      <SectionHeader
+          title="My Approach"
+          eyebrow=""
+          description="Here's how I tackle projects from start to finish."
+        />
       <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4 pt-16">
         <Card
           title="Understand & Break Down
