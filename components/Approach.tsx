@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Particles } from "./Particles";
 
 import { CanvasRevealEffect } from "./ui/canvas-reveal-effect";
 import { SectionHeader } from "./SectionHeader";
@@ -8,7 +9,15 @@ import { SectionHeader } from "./SectionHeader";
 
 const Approach = () => {
   return (
+    
     <section className="w-full py-10 pt-16 ">
+      <Particles
+        className="absolute inset-0 z-0"
+        quantity={100}
+        ease={80}
+        color={"#ffffff"}
+        refresh
+      />
       <SectionHeader
           title="My Approach"
           eyebrow=""
