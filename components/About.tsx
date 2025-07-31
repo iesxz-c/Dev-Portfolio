@@ -31,13 +31,13 @@ const toolboxItems = [
 
 const hobbies = [
   { title: "Traveling", emoji: "🌍", left: '5%', top: '5%' },
-  { title: "Comics", emoji: "🦸‍♂️", left: '50%', top: '5%' },
-  { title: "Music", emoji: "🌷", left: '10%', top: '35%' },
-  { title: "Movies", emoji: "🎬", left: '35%', top: '40%' },
+ 
+  { title: "Music", emoji: "🎧", left: '10%', top: '35%' },
+  { title: "Sci-Fi", emoji: "🎦", left: '35%', top: '40%' },
   { title: "Cricket", emoji: "🏏", left: '70%', top: '45%' },
-  { title: "Reading", emoji: "📚", left: '5%', top: '65%' },
+
   { title: "Coffee", emoji: "☕", left: '25%', top: '15%' },
-  { title: "Tennis", emoji: "🎾", left: '60%', top: '20%' },
+ 
   { title: "eFootball", emoji: "⚽", left: '15%', top: '50%' },
   { title: "Minecraft", emoji: "🧱", left: '55%', top: '55%' },
   { title: "Manga", emoji: "📖", left: '30%', top: '25%' },
@@ -164,26 +164,7 @@ export const AboutSection = () => {
             </motion.div>
           </div>
 
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 120 }}
-            className="grid grid-cols-1"
-          >
-            <Card className="h-[320px] p-0 backdrop-blur-xl border border-white/10">
-              {typeof window === "undefined" ? null : (
-                <div className="hidden md:block">
-                  <CardHeader
-                    title="Spotify"
-                    description="Vibes from my recent playlist."
-                    className="px-6 py-6"
-                  />
-                </div>
-              )}
-              <div className="p-6">
-                <NowPlayingCard />
-              </div>
-            </Card>
-          </motion.div>
+         <NowPlayingCard />
         </div>
       </div>
     </div>

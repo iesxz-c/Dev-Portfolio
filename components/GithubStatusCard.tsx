@@ -37,6 +37,13 @@ interface GitHubStats {
   contributionCalendar: ContributionCalendar;
 }
 
+const pinkScale = [
+ "#7b214f", // low
+  "#c83278", // medium
+  "#f56fa1", // high
+  "#ffb3d9", // very high
+];
+
 const GitHubStatsCard = () => {
   const [stats, setStats] = useState<GitHubStats | null>(null);
   const [loading, setLoading] = useState(true);
@@ -101,6 +108,14 @@ const GitHubStatsCard = () => {
 
     fetchGitHubStats();
   }, []);
+const getHeatmapColor = (count: number): string => {
+  if (count === 0) return "#D6CBC9"; // gray for no contributions
+  if (count <= 2) return pinkScale[0];
+  if (count <= 5) return pinkScale[1];
+  if (count <= 10) return pinkScale[2];
+  return pinkScale[3];
+};
+
 
   const renderHeatmap = () => {
     if (!stats?.contributionCalendar?.weeks) return null;
@@ -115,7 +130,7 @@ const GitHubStatsCard = () => {
                 className="w-3 h-3 rounded-sm transition-all hover:scale-110"
                 style={{
                   backgroundColor:
-                    day.color === "#161b22" ? "#2d3748" : day.color,
+                    getHeatmapColor(day.contributionCount),
                 }}
                 title={`${day.contributionCount} contributions on ${day.date}`}
               />
@@ -213,12 +228,15 @@ const GitHubStatsCard = () => {
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
       className="max-w-full"
-    ><SectionHeader
+    >
+    <div className="pb-14 p-8">
+      <div className="pt-6">
+    <SectionHeader
           title="Github"
           eyebrow=""
-          description=""
+          description="Check out my GitHub profile for more details on my projects and contributions."
         />
-      <div className="relative overflow-hidden rounded-3xl bg-transparent border border-white/10 shadow-none hover:translate-y-[-2px] transition-all duration-300 w-full h-[320px] after:absolute after:inset-0 after:rounded-3xl after:border-2 after:border-white/20 after:pointer-events-none after:opacity-100">
+      <div className="mt-14 relative overflow-hidden rounded-3xl bg-transparent border border-white/10 shadow-none hover:translate-y-[-2px] transition-all duration-300 w-full h-[320px] after:absolute after:inset-0 after:rounded-3xl after:border-2 after:border-white/20 after:pointer-events-none after:opacity-100">
         <div className="p-6">
           <div className="flex justify-between items-center mb-3 sm:mb-4">
             <a
@@ -256,14 +274,14 @@ const GitHubStatsCard = () => {
             </Text>
           </div>
 
-    <div className="  rounded p-2 sm:p-3 max-w-full overflow-x-auto">
+    <div className=" mt-8  rounded p-2 sm:p-3 max-w-full overflow-x-auto">
   <div className="w-full flex justify-center">
     {renderHeatmap()}
   </div>
 </div>
           
         </div>
-      </div>
+      </div></div> </div>
     </motion.div>
   );
 };

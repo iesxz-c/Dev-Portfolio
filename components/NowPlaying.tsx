@@ -1,6 +1,10 @@
 "use client";
+import { CardHeader } from "./CardHeader";
+import { Card } from "./Card";
+import { motion } from "framer-motion";
 
 import { useEffect, useState, useRef } from "react";
+import { SectionHeader } from "./SectionHeader";
 
 import { Text } from "@/components/retroui/Text";
 import Image from "next/image";
@@ -130,10 +134,26 @@ export default function NowPlayingCard() {
     track?.isPlaying && track.durationMs
       ? Math.min(Math.round((progressMs / track.durationMs) * 100), 100)
       : 0;
-
+   if (!track || !track.isPlaying) return <></>;
   return (
     <>
-    <div className="flex flex-col md:flex-row items-center gap-4 p-2">
+     <motion.div
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 120 }}
+            className="grid grid-cols-1"
+          >
+            <Card className="h-[320px] p-0 backdrop-blur-xl border border-white/10">
+              {typeof window === "undefined" ? null : (
+                <div className="hidden md:block">
+                  <CardHeader
+                    title="Spotify"
+                    description="Vibes from my recent playlist."
+                    className="px-6 py-6"
+                  />
+                </div>
+              )}
+              <div className="p-6">
+                <div className="flex flex-col md:flex-row items-center gap-4 p-2">
       {/* Album Art */}
       <div className="relative  w-28 h-28 md:w-32 md:h-32 flex-shrink-0 rounded-full overflow-hidden border border-white/30 bg-white/10">
         <div
@@ -225,6 +245,9 @@ export default function NowPlayingCard() {
         </span>
       </div>
       </div>
+              </div>
+            </Card>
+          </motion.div>
     </>
   );
 }

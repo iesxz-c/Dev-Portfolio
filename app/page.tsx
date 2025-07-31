@@ -10,6 +10,7 @@ import Contact from "@/components/Contact";
 import GitHubStatsCard from "@/components/GithubStatusCard";
 import { OrbitingCirclesDemo } from "@/components/O";
 
+
 export default function Home() {
   return (
    <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
@@ -17,7 +18,7 @@ export default function Home() {
         <FloatingNav navItems={navItems}/>
         <Hero/>
         <AboutSection/>
-        
+   
         <RecentProjects/>
         <Projects/>
         <GitHubStatsCard/>
