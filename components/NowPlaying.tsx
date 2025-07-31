@@ -9,6 +9,7 @@ import { SectionHeader } from "./SectionHeader";
 import { Text } from "@/components/retroui/Text";
 import Image from "next/image";
 import clsx from "clsx";
+export const revalidate = 86400; 
 
 interface NowPlaying {
   isPlaying: boolean;
