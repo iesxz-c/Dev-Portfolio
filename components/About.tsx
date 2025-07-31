@@ -16,7 +16,7 @@ import { ToolboxItems } from "./ToolboxItems";
 import GridGlobe from "./ui/GridGlobe";
 import { motion } from "framer-motion";
 import { useRef } from "react";
-import NowPlayingCard from "@/components/NowPlaying";
+//import NowPlayingCard from "@/components/NowPlaying";
 
 const toolboxItems = [
   { title: "JavaScript", iconType: JsIcon },
@@ -164,7 +164,7 @@ export const AboutSection = () => {
             </motion.div>
           </div>
 
-         <NowPlayingCard />
+       {/* <NowPlayingCard /> */}
         </div>
       </div>
     </div>

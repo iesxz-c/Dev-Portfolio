@@ -7,7 +7,7 @@ import Projects from "@/components/Projects";
 import Approach from "@/components/Approach";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
-import GitHubStatsCard from "@/components/GithubStatusCard";
+//import GitHubStatsCard from "@/components/GithubStatusCard";
 import { OrbitingCirclesDemo } from "@/components/O";
 
 
@@ -21,7 +21,7 @@ export default function Home() {
    
         <RecentProjects/>
         <Projects/>
-        <GitHubStatsCard/>
+        {/* <GitHubStatsCard/> */}
 
         <Approach/>
         <OrbitingCirclesDemo/>
