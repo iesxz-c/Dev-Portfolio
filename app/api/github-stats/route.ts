@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-
+export const revalidate = 86400; 
 interface GitHubRepo {
   stargazers_count: number;
   name: string;
