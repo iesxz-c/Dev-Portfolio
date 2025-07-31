@@ -97,11 +97,9 @@ export default function NowPlayingCard() {
       });};
     
     fetchTrack();
-    const interval = setInterval(() => {
-      fetchTrack();
-    }, 30000); // every 30 seconds
+     // every 30 seconds
 
-    return () => clearInterval(interval);
+    
   }, []);
 
   useEffect(() => {
