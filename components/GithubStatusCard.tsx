@@ -55,7 +55,9 @@ const GitHubStatsCard = () => {
         const githubUrl = DATA.hero.social.GitHub
         const username = githubUrl.split("/").pop();
 
-        const response = await fetch(`/api/github-stats?username=${username}`);
+        const response = await fetch(`/api/github-stats?username=${username}`,{
+          next: { revalidate: 86400 }
+        });
 
         if (!response.ok) {
           if (response.status === 403) {
