@@ -57,7 +57,7 @@ export const socialMedia = [
   {
     id: 3,
     img: "/link.svg",
-    href: "https://www.linkedin.com/in/akash-krishnan-b32631287/"
+    href: "https://www.linkedin.com/in/akash-g-j-b32631287/"
   },
    {
     id:4,
