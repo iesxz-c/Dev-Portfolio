@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   webpack(config) {
-    // Handle SVG imports as React components
+    // Keep this if you still use SVGs as React components
     config.module.rules.push({
       test: /\.svg$/,
       use: ["@svgr/webpack"],
@@ -15,38 +15,14 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
 
-  async headers() {
-    return [
-      {
-        source: "/api/(.*)",
-        headers: [
-          {
-            key: "Access-Control-Allow-Origin",
-            value:
-              process.env.NODE_ENV === "development"
-                ? "http://127.0.0.1:3000"
-                : "https://yourdomain.com",
-          },
-          {
-            key: "Access-Control-Allow-Methods",
-            value: "GET, POST, PUT, DELETE, OPTIONS",
-          },
-          {
-            key: "Access-Control-Allow-Headers",
-            value: "Content-Type, Authorization",
-          },
-        ],
-      },
-    ];
-  },
-
   images: {
-    domains: ["i.scdn.co"],
+    domains: [], // Remove "i.scdn.co" since it's Spotify-specific
   },
 
   experimental: {
-    // add experimental flags here if needed
+    // Leave blank or remove if unused
   },
 };
 
 export default nextConfig;
+
