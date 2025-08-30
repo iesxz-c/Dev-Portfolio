@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Akash's Portfolio",
   description: "Just a student trying to make the computer do what I want (sometimes it listens)",
+   icons: {
+    icon: '/favicon.ico', // <- this sets the favicon
+  },
 };
 
 export default function RootLayout({

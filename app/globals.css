@@ -7,8 +7,40 @@
   .animate-slideUp {
     animation: slideUp 0.6s ease-out both;
   }
+  /* ========== CERTIFICATE PANNING ANIMATION ========== */
+.panning-image-container {
+  @apply relative overflow-hidden; /* This masks the moving image */
+}
+.panning-image {
+  /* The animation itself: 15s duration, linear, infinite loop */
+  animation: pan-vertical 15s linear infinite alternate;
+}
+/* The hover-to-pause interaction */
+.panning-image-container:hover .panning-image {
+  animation-play-state: paused;
+}
 
-  @keyframes slideUp {
+.animate-aurora {
+  background: linear-gradient(to right, #ffffff, #a855f7, #38bdf8, #ffffff);
+  background-size: 200% auto;
+  animation: aurora-shine 5s linear infinite;
+}
+
+@keyframes aurora-shine {
+  to {
+    background-position: 200% center;
+  }
+}
+@keyframes pan-vertical {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    /* This value determines how far the image scrolls. Adjust if needed. */
+    transform: translateY(-25%); 
+  }
+}
+@keyframes slideUp {
     0% {
       transform: translateY(40px);
       opacity: 0;
@@ -16,7 +48,7 @@
     100% {
       transform: translateY(0);
       opacity: 1;
-    }
+    } 
   }
 
   .rgb-border {
@@ -171,6 +203,31 @@ body {
   background-blend-mode: overlay;
 }
 
+/* ========== STYLISH MODAL SCROLLBAR ========== */
+.custom-scrollbar-on-modal {
+  /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #8B5CF6 #1F2937; /* thumb color, track color */
+}
+
+/* For Chrome, Safari, and Edge */
+.custom-scrollbar-on-modal::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar-on-modal::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.custom-scrollbar-on-modal::-webkit-scrollbar-thumb {
+  background-color: rgba(139, 92, 246, 0.5); /* Semi-transparent purple */
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background-color 0.3s ease;
+}
+.custom-scrollbar-on-modal::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(139, 92, 246, 0.8); /* Brighter purple on hover */
+}
 /* Custom cursor styles */
 .cursor-dot,
 .cursor-ring {
