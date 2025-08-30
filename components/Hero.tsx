@@ -231,7 +231,7 @@ const Hero = () => {
             >
               <TextGenerateEffect 
                 className="text-center text-lg md:text-xl lg:text-2xl text-white/80"
-                words="Curious mind, evolving code, steady learning — and yes, coffee is part of the stack"
+                words="Curious mind, evolving code, steady learning — and yes coffee is part of the stack"
               />
             </motion.div>
 
