@@ -1,4 +1,4 @@
-// file: /components/ProjectsShowcase.tsx
+
 
 "use client";
 import React from 'react';
@@ -8,7 +8,6 @@ import { Particles } from './Particles';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { FiX } from 'react-icons/fi';
 
-// --- DATA (Unchanged) ---
 const projects = [
  {
  id: 1,

@@ -1,12 +1,10 @@
-// file: /components/about-cards/WorkflowCard.tsx
-
 "use client";
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card } from "./Card";
 import { CardHeader } from "./CardHeader";
 
-// 1. UPDATED DATA: Removed the 'effect' and added 'bgColor' and 'glowColor' for the spotlight
+
 const workflowPhases = [
   {
   phase: "Phase 1",
@@ -42,22 +40,20 @@ const WorkflowCard = () => {
         description="A structured approach to building great products."
         className="px-6 py-6"
       />
-      {/* Set parent to relative for the absolute spotlight */}
+
       <div
         className="relative flex flex-grow flex-col justify-around p-6 pt-0"
-        onMouseLeave={() => setHoveredPhase(null)} // Reset when mouse leaves the container
+        onMouseLeave={() => setHoveredPhase(null)} 
       >
         {workflowPhases.map((item, index) => (
           <div
             key={item.title}
             onMouseEnter={() => setHoveredPhase(index)}
-            // Make the text container relative to sit on top of the spotlight
             className="relative cursor-pointer rounded-lg p-4 transition-colors"
           >
-            {/* The Magic: The Sliding Spotlight background */}
             {hoveredPhase === index && (
               <motion.div
-                // This ID tells framer-motion that it's the SAME element, so it animates its layout
+          
                 layoutId="spotlight"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 0.3 } }}

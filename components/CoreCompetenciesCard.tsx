@@ -4,7 +4,6 @@ import { Card } from "./Card";
 import { CardHeader } from "./CardHeader";
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Import your SVG icons here
 import JsIcon from "@/assets/icons/square-js.svg";
 import ReactIcon from "@/assets/icons/react.svg";
 import PythonIcon from "@/assets/icons/python-brands.svg";

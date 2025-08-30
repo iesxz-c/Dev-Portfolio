@@ -39,7 +39,7 @@ export default function CustomCursor() {
     window.addEventListener("mousemove", moveCursor);
     window.addEventListener("mousedown", clickPulse);
 
-    followRing(); // Start ring follow animation loop
+    followRing(); 
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);

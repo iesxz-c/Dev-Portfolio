@@ -2,13 +2,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// --- TYPE DEFINITIONS ---
 interface TerminalLine {
   type: "input" | "output" | "error";
   content: string;
 }
 
-// --- ICON COMPONENTS ---
 const TerminalIcon = () => (
   <img
     src="/kl.svg"
@@ -22,7 +20,6 @@ const CloseIcon = () => (
     </svg>
 );
 
-// --- HELPER FUNCTION FOR STYLISH BOXES ---
 const createBoxedOutput = (title: string, content: string) => {
     const width = 58;
     const titlePadding = " ".repeat(Math.floor((width - title.length) / 2));
@@ -33,9 +30,7 @@ const createBoxedOutput = (title: string, content: string) => {
 };
 
 
-// ===============================================================
-// MAIN TERMINAL COMPONENT
-// ===============================================================
+
 export const Terminal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentInput, setCurrentInput] = useState("");
@@ -165,7 +160,7 @@ Tools & Infrastructure:
   const typewriterEffect = async (text: string, onUpdate: (newText: string) => void) => {
     setIsTyping(true);
     for (let i = 0; i < text.length; i++) {
-      await new Promise((resolve) => setTimeout(resolve, 5)); // Faster typing
+      await new Promise((resolve) => setTimeout(resolve, 5));
       onUpdate(text.slice(0, i + 1));
     }
     setIsTyping(false);

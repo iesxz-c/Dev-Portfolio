@@ -162,7 +162,6 @@ const techData = {
 type Category = keyof typeof techData;
 type Skill = (typeof techData)[Category][number];
 
-// Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {

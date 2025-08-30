@@ -1,4 +1,3 @@
-// components/LiveGithubCard.tsx
 "use client";
 import React, { useEffect, useState } from "react";
 import { Card } from "./Card";
@@ -9,7 +8,6 @@ interface GitHubStats {
   followers: number;
   following: number;
   total_stars: number;
-  // Add other stats you want here
 }
 
 interface CachedData {
@@ -18,7 +16,7 @@ interface CachedData {
   username: string;
 }
 
-const CACHE_DURATION = 3 * 24 * 60 * 60 * 1000; // 3 days in milliseconds
+const CACHE_DURATION = 3 * 24 * 60 * 60 * 1000; 
 
 const LiveGithubCard = ({ username }: { username: string }) => {
   const [stats, setStats] = useState<GitHubStats | null>(null);
@@ -40,7 +38,6 @@ const LiveGithubCard = ({ username }: { username: string }) => {
         return parsedData;
       }
       
-      // Cache expired or different username, remove it
       localStorage.removeItem(getCacheKey(username));
       return null;
     } catch (error) {
@@ -108,7 +105,7 @@ const LiveGithubCard = ({ username }: { username: string }) => {
     loadGitHubStats();
   }, [username]);
 
-  // Helper function to get cache age info for debugging/display
+ 
   const getCacheInfo = () => {
     const cachedData = getCachedData(username);
     if (!cachedData) return null;

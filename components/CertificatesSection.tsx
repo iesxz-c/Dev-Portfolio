@@ -1,4 +1,3 @@
-// file: /components/CertificatesSection.tsx
 
 "use client";
 import React, { useState, useEffect } from "react";
@@ -8,8 +7,7 @@ import { SectionHeader } from "./SectionHeader";
 import { FaArrowRight, FaTimes, FaCheckCircle } from "react-icons/fa";
 
 
-// 1. YOUR ACTUAL CERTIFICATES DATA
-// I've added an 'issuer' and 'date' field to your data structure for a more complete display.
+
 const certificates = [
   {
     id: 1,
@@ -76,8 +74,7 @@ const CertificateDetailsModal = ({ cert, closeModal }: { cert: Certificate; clos
     hidden: {},
   };
 
-  // --- THIS IS THE FIX ---
-  // Added 'as const' to the transition type to satisfy TypeScript
+
   const itemVariants = {
     visible: { opacity: 1, x: 0, transition: { type: 'spring' as const, stiffness: 300, damping: 24 } },
     hidden: { opacity: 0, x: -20 },

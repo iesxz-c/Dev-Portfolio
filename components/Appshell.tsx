@@ -10,10 +10,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     setHasMounted(true);
 
-    // simulate loading duration
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 6000); // adjust duration
+    }, 6000); 
 
     return () => clearTimeout(timer);
   }, []);
