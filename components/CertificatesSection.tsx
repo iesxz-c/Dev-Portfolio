@@ -54,6 +54,19 @@ const certificates = [
     href: "https://www.hackerrank.com/certificates/4d9e4d19d549",
     image: "/hkr.png",
     tags: [ { id:"1", name: "React", path: "react" } ],
+  },
+  {
+    id: 4,
+    title: "Rest API Certification",
+    issuer: "HackerRank",
+    date: "Issued 2025",
+    description: "Certified in Rest API development, demonstrating proficiency in building and consuming RESTful services.",
+    subDescription: [
+      "Designed and implemented RESTful APIs using Python."
+    ],
+    href: "https://www.hackerrank.com/certificates/c2fb94932852",
+    image: "/restiii.jpg",
+    tags: [ { id:"1", name: "Python", path: "Python" } ],
   }
 ];
 
