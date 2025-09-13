@@ -81,6 +81,18 @@ color: "#EC4899",
  isSpotlight: false,
  iconLists: [ "python", "flask", "html5", "css", "sqlalchemy","socketdotio","jinja" ],
  },
+ {
+ id: 7,
+ title: "Hanoi - ML Seat Detection & Wi-Fi Gated Access",
+ description: "A React Native & TypeScript app with Flask backend, Firebase Authentication, YOLOv8-based seat occupancy detection, and a personalized recommendation engine, designed to automate library entry, manage book borrowing, and enhance user experience.",
+ img: "/11.png",
+ link: "https://github.com/iesxz-c/hanoi",
+ status: "Completed",
+ category: "Mobile App",
+color: "#6D28D9",
+ isSpotlight: true,
+ iconLists: [ "python", "flask", "typescript", "expo", "firebase","yolo" ],
+ },
 ];
 const filters = ["All", "Web App", "Mobile App", "AI"];
 type Project = typeof projects[0];
